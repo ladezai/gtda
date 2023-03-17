@@ -197,11 +197,11 @@ function compute_betty_numbers(complex)
     
     # Ok theoretically it is ok, but I need 
     ∂₂ = _generate_boundary_matrix(C_2, C_1)
-    println(∂₂)
+    #println(∂₂)
     ∂₂ = _gaussian_elim_z2_pivot(∂₂)
-    println(∂₂)
+    #println(∂₂)
     r_2    = rank(∂₂) 
-    println(r_2)
+    #println(r_2)
     ∂₁ = _generate_boundary_matrix(C_1, C_0)
     #println(∂₁)
     ∂₁ = _gaussian_elim_z2_pivot(∂₁)
@@ -218,22 +218,19 @@ function compute_examples()
     complex1 = ComplexSimplex(Set([Set([1, 2, 3])]), 2)
     # Construct the full simplex
     newComplex = generate_from_maximal_faces(complex1)
-    println(newComplex)
     # Check if the betties number are right
     betties = compute_betty_numbers(newComplex)
-    println(betties)
+    println("The betty numbers of\n$newComplex, are\n$betties")
     
     complex1 = ComplexSimplex(Set([Set([1, 2, 3]), Set([2,4]), Set([1,4])]), 2)
     newComplex= generate_from_maximal_faces(complex1)
-    println(newComplex)
     betties = compute_betty_numbers(newComplex)
-    println(betties)
+    println("The betty numbers of\n$newComplex, are\n$betties")
 
     complex1 = ComplexSimplex(Set([Set([1, 2, 3]), Set([4,2]), Set([4,1])]), 2)
     newComplex = generate_from_maximal_faces(complex1)
-    println(newComplex.F_p)
     betties = compute_betty_numbers(newComplex)
-    println(betties)
+    println("The betty numbers of\n$newComplex, are\n$betties")
 end
 
 function compute_torus()
@@ -245,11 +242,10 @@ function compute_torus()
     torus = ComplexSimplex(Set(b1), 2)
     completeTorus :: ComplexSimplex = generate_from_maximal_faces(torus)
     betties = compute_betty_numbers(completeTorus)
-    #println(completeTorus)
-    println(betties)
+    println("The betty numbers of the Torus, are $betties")
     # correct result
     # 1 2 0 
 end
 
-compute_examples()
+#compute_examples()
 compute_torus()
