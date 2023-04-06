@@ -1,4 +1,4 @@
-
+using Latexify
 """
     A small script to compute the simplex homology up to
     dimension 2 in 𝚭₂ using BitArray for memory efficiency. 
@@ -197,12 +197,20 @@ function compute_betty_numbers(complex)
     
     # Ok theoretically it is ok, but I need 
     ∂₂ = _generate_boundary_matrix(C_2, C_1)
+    # additional debug + latex formatting
+    #stringMat2 = replace(latexify(∂₂), "true" => 1)
+    #stringMat2 = replace(stringMat2, "false" => 0)
+    #println("boundary 2:\n$stringMat2")
     #println(∂₂)
     ∂₂ = _gaussian_elim_z2_pivot(∂₂)
     #println(∂₂)
     r_2    = rank(∂₂) 
     #println(r_2)
     ∂₁ = _generate_boundary_matrix(C_1, C_0)
+    # additional debug + latex formatting
+    #stringMat1 = replace(latexify(∂₁), "true" => 1)
+    #stringMat1 = replace(stringMat1, "false" => 0)
+    #println("boundary 1: $stringMat1")
     #println(∂₁)
     ∂₁ = _gaussian_elim_z2_pivot(∂₁)
     #println(∂₁)
@@ -249,3 +257,4 @@ end
 
 #compute_examples()
 compute_torus()
+#latexify()
