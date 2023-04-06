@@ -8,6 +8,18 @@ nonprimes_below12 = np.array([1,4,6,8,9,10,12])
 sphere_without_primes = np.array([np.cos(nonprimes_below12 * 2 * np.pi / 12),
                                      np.sin(nonprimes_below12 * 2 * np.pi /
                                                 12)]).T
+N = 100
+nn = np.arange(N)
+sphere = np.array([np.cos(nn * 2 * np.pi / N),
+                   np.sin(nn * 2 * np.pi / N)]).T
+
+# Plot the data, plus a circle.
+plt.plot(sphere[:,0], sphere[:,1], color="gray")
+plt.scatter(sphere_without_primes[:,0], sphere_without_primes[:,1], color="b")
+plt.ylim([-1.5,1.5])
+plt.xlim([-1.5,1.5])
+plt.title(r'$\mathbf{S}^1$')
+plt.show()
 
 """
     The following code provides the barcodes for the persistence homology of
