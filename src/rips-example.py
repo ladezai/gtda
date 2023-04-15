@@ -34,28 +34,11 @@ rips         = gudhi.RipsComplex(points=sphere_without_primes,
                                  max_edge_length=3) 
 rips_simplex_tree = rips.create_simplex_tree(max_dimension=2)
 rips_diag    = rips_simplex_tree.persistence()
+
+# visualize persistence diagram and barcode
 gudhi.plot_persistence_barcode(rips_diag, legend=True)
 plt.show()
 gudhi.plot_persistence_diagram(rips_diag, legend=True)
 plt.show()
-# visualize persistence diagram
-
-"""
-    To test the Cech complex behaviour, since neither Gudhi nor 
-    Ripserer provide Cech complexes, we are using Alpha complexes 
-    due to the fact that they should be at least homeomorphic (and 
-    as the barcodes below picture), we don't have much differences 
-    from the expected behaviour (i.e. the 1-dim hole disappears
-    as the radious is larger than 1 and it appears at about 1/2 which
-    is close to sqrt(2)/2). 
-"""
-cech         = gudhi.AlphaComplex(points=sphere_without_primes)
-cech_simplex_tree = cech.create_simplex_tree()
-cech_diag    = cech_simplex_tree.persistence()
-gudhi.plot_persistence_barcode(cech_diag, legend=True)
-plt.show()
-gudhi.plot_persistence_diagram(cech_diag, legend=True)
-plt.show()
-# visualize persistence diagram
 
 
